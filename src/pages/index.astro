@@ -38,15 +38,17 @@ import Layout from "../layouts/Layout.astro";
 			} else {
 				resenasDiv.innerHTML = ""; // Limpiar antes de agregar contenido
 				resenas.forEach((resena) => {
-					const div = document.createElement("div");
-					div.className =
-						"flex flex-col bg-white shadow-lg rounded-xl p-5";
-					div.innerHTML = `
+					if (resena.nombre !== "") {
+						const div = document.createElement("div");
+						div.className =
+							"flex flex-col bg-white shadow-lg rounded-xl p-5";
+						div.innerHTML = `
 						<strong>${resena.nombre}</strong>
 						<p>${resena.comentario}</p>
 						<p>Calificación: ${generarEstrellas(resena.calificacion)}</p>
 					`;
-					resenasDiv.appendChild(div);
+						resenasDiv.appendChild(div);
+					}
 				});
 			}
 		}
