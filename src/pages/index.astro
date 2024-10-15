@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 
 let resenas = [];
 
-// Función para hacer el fetch y guardar los datos en la variable resenas
 async function obtenerResenas() {
 	const response = await fetch(
 		"https://script.google.com/macros/s/AKfycbzTkO5VeaSI4TTozCV1Z3n_C3k-64_S13sB6d4hG5Iuz6fC9E-NUYbYnAocKRKrVB8K/exec",
@@ -16,12 +15,11 @@ async function obtenerResenas() {
 	resenas = await response.json();
 }
 
-// Ejecutar el fetch antes del renderizado
 await obtenerResenas();
 ---
 
 <Layout title="Welcome to Astro.">
-	<div id="resenas">
+	<div id="resenas" class="p-20 grid grid-cols-6 gap-5">
 		{
 			resenas.length === 0 ? (
 				<p>No hay reseñas disponibles.</p>
