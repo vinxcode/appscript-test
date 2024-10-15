@@ -16,19 +16,24 @@ async function obtenerResenas() {
 }
 
 await obtenerResenas();
+
+function generarEstrellas(calificacion) {
+	const maxEstrellas = 5;
+	return "★".repeat(calificacion) + "☆".repeat(maxEstrellas - calificacion);
+}
 ---
 
 <Layout title="Welcome to Astro.">
-	<div id="resenas" class="p-20 grid grid-cols-6 gap-5">
+	<div id="resenas" class="p-4 lg:p-20 grid grid-cols-1 md:grid-cols-2 gap-5 xl:grid-cols-6">
 		{
 			resenas.length === 0 ? (
 				<p>No hay reseñas disponibles.</p>
 			) : (
 				resenas.map((resena) => (
-					<div class="flex flex-col">
+					<div class="flex flex-col bg-white shadow-lg rounded-xl p-5">
 						<strong>{resena.nombre}</strong>
 						<p>{resena.comentario}</p>
-						<p>({resena.calificacion})</p>
+						<p>Calificación: {generarEstrellas(resena.calificacion)}</p>
 					</div>
 				))
 			)
