@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Welcome to Astro.">
 	<div
 		id="resenas"
-		class="p-4 lg:p-20 grid grid-cols-1 md:grid-cols-3 gap-5 lg:grid-cols-6"
+		class="w-full p-4 lg:p-20 grid grid-cols-1 md:grid-cols-3 gap-5 xl:grid-cols-4"
 	>
 		<p class="text-center">Loading reviews...</p>
 	</div>
@@ -36,7 +36,7 @@ import Layout from "../layouts/Layout.astro";
 			if (resenas.length === 0) {
 				resenasDiv.innerHTML = "<p>No hay reseñas disponibles.</p>";
 			} else {
-				resenasDiv.innerHTML = ""; // Limpiar antes de agregar contenido
+				resenasDiv.innerHTML = "";
 				resenas.forEach((resena) => {
 					if (resena.nombre !== "") {
 						const div = document.createElement("div");
